@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8001';
+
 
 document.getElementById('loanForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ async function submitPrediction() {
         }
 
         // Make API request
-        const response = await fetch(`${API_BASE_URL}/predict`, {
+        const response = await fetch("/predict", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -143,11 +143,11 @@ function getRiskEmoji(riskLevel) {
 // Test API connection on page load
 window.addEventListener('load', async () => {
     try {
-        const response = await fetch(`${API_BASE_URL}/docs`);
+        const response = await fetch("/docs");
         if (!response.ok) {
-            console.warn('API server is not responding');
+            console.warn("API server is not responding");
         }
     } catch (error) {
-        console.warn('Cannot connect to API server. Make sure it is running on http://localhost:8001');
+        console.warn("API not reachable");
     }
 });
